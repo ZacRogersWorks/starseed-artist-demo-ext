@@ -3,6 +3,13 @@
     "name": "Starseed Artist Demo",
     "description": "Tech demo showcasing Starseed extension for artists",
     "version": "0.0.1",
+    "permissions": [
+      "activeTab",
+      "scripting",
+      "tabs",
+      "webNavigation",
+      "storage"
+    ],
     "action" : {
         "default_popup": "popup.html",
         "default_title": "Starseed Artist",
