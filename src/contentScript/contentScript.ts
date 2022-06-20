@@ -1,3 +1,3 @@
-chrome.runtime.sendMessage("From the content script", (response) => {
-    console.log(response);
-})
+// Test ability to detect current page as user browses
+
+// add an image to the list of videos
