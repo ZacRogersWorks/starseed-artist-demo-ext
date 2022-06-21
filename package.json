@@ -1,6 +1,7 @@
 {
-  "name": "reactjs-chrome",
-  "author": "Himanshu Batra",
+  "name": "starseed-artist-extension",
+  "private": "true",
+  "author": "Zac Rogers, Michael Carr",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
