@@ -1,5 +1,3 @@
-import NavgiationChange from "./NavigationChange";
-
 /**
  * Detect when a user loads page from URL bar using Enter
  * or when user clicks reload button
@@ -38,7 +36,7 @@ chrome.webNavigation.onCommitted.addListener((details) => {
  * This includes back and forward buttons
  * */
 
-chrome.webNavigation.onHistoryStateUpdated.addListener(async function (details) {
+chrome.webNavigation.onHistoryStateUpdated.addListener(function (details) {
   if (details.frameId === 0) {
     chrome.storage.sync.set({ currentURL: details.url })
     // send a message to the content script to alert it that the URL has changed
