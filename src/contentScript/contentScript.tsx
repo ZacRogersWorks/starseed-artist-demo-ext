@@ -8,16 +8,14 @@ chrome.runtime.onMessage.addListener((msg) => {
   if (msg.action === 'historyStateUpdated') {
     getValueFromStorage('currentURL', (res: { currentURL: string }) => {
       router(res.currentURL)
-      console.log('historyURL', res.currentURL)
     })
   }
 })
 
 function router(route: string): void {
   if (route.includes('/results')) {
-    console.log('router fired')
-
     setTimeout(addBannerToSearchResults, 400)
+    setTimeout(addMutationObservers, 400)
   }
 }
 
@@ -49,20 +47,57 @@ function router(route: string): void {
  * DECLARATIONS
  */
 
-function addBannerToSearchResults(): void {
-  const videoIds = ['bmG1QaiOYp4', 'fFI-wk4PeAc', 'I-vIE9rO5Gg', 'Ml5KLG6-bXg']
+// get all video render boxes
+// attach mutation observer on all of them
+// in the CB check to see if the video ID matches, if so add the banner, 
+// if not, remove the banner
 
+function addMutationObservers() {
+  // const config = { attributes: true, childList: true, subtree: true };
+  // const videos = document.getElementsByTagName('ytd-thumbnail')
+  // const observer = new MutationObserver(callback);
+
+  // for (let i = 0; i < videos.length; i++) {
+  //   observer.observe(videos[i], config)
+  // }
+
+  // function callback(mutationList) {
+  //   for (const mutation of mutationList) {
+  //     if (mutation.type === 'childList') {
+  //       console.log((mutation))
+  //     }
+  //   }
+  // }
+}
+
+function cleanUpBanners() {
   // remove existing banners
   const existingImgs = document.getElementsByClassName('starseed-banner')
+  const videoIds = ['bmG1QaiOYp4', 'fFI-wk4PeAc', 'I-vIE9rO5Gg', 'Ml5KLG6-bXg']
+
   console.log('existingImgs to remove', existingImgs)
   while (existingImgs.length) {
-    for (let i = 0; i < existingImgs.length; i++) {
-      existingImgs[i].remove()
-    }
+    videoIds.forEach((id) => {
+      for (let i = 0; i < existingImgs.length; i++) {
+        const img = existingImgs[i]
+        const parent = img.parentElement
+        const anchor = parent.getElementsByTagName('a')
+
+        if (!anchor[0].getAttribute('href').includes(id)) {
+          img.remove()
+        }
+      }
+    })
   }
   console.log('existingImgs after remove', existingImgs)
+}
 
+document.addEventListener('yt-navigate-finish', () => {
+  cleanUpBanners()
+})
 
+function addBannerToSearchResults(): void {
+  const videoIds = ['bmG1QaiOYp4', 'fFI-wk4PeAc', 'I-vIE9rO5Gg', 'Ml5KLG6-bXg']
   videoIds.forEach((id: string) => {
     const anchors = $(`a[href*="/watch?v=${id}"][id="thumbnail"]`)
 
@@ -79,9 +114,9 @@ function addBannerToSearchResults(): void {
           img.style.position = 'absolute'
           img.style.top = '-30px'
           img.style.left = '0'
+          img.dataset.ssVideo = id
           img.className = 'starseed-banner'
           if (anchor.getAttribute('href').includes(id)) {
-            console.log(anchor.getAttribute('href'))
             resultRow.prepend(img)
             resultRow.style.marginTop = '30px';
           }
