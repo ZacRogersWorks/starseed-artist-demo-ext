@@ -3,12 +3,22 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    colors: {
-      starseedGray: "#F7F8FF",
+    extend: {
+      colors: {
+        starseedGray: "#F7F8FF",
+        starseedPurp: "#D7D9FF",
+        starseedBlue: "#5F8FFF"
+      },
+      fontSize: {
+        xxs: ".6rem"
+      }
+    },
+    backgroundImage: {
+      'artist-bg': "url('images/artist-bg.jpeg')",
     },
     fontFamily: {
       abc: ['ABC Favorit'],
-    }
+    },
   },
   plugins: [],
 }

@@ -40,7 +40,7 @@ const TopBanner = () => {
                         </span>
                     </a>
                 </div>
-                <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg className="-translate-x-2" width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M0.954102 9.40648L5.15356 5.20703L0.954104 1.00757" stroke="#B796F0" stroke-width="1.04986" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
 
