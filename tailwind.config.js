@@ -3,7 +3,12 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    colors: {
+      starseedGray: "#F7F8FF",
+    },
+    fontFamily: {
+      abc: ['ABC Favorit'],
+    }
   },
   plugins: [],
 }
