@@ -41,7 +41,10 @@ chrome.webNavigation.onHistoryStateUpdated.addListener(function (details) {
     chrome.storage.sync.set({ currentURL: details.url })
     // send a message to the content script to alert it that the URL has changed
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-      chrome.tabs.sendMessage(tabs[0].id, { action: 'historyStateUpdated' })
+      chrome.tabs.sendMessage(tabs[0].id, { action: 'historyStateUpdated' }, (res) => {
+        console.log(res)
+        return true
+      })
     })
   }
 

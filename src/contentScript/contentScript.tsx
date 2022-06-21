@@ -3,8 +3,12 @@ getValueFromStorage('currentURL', (res: { currentURL: string }) => {
   router(res.currentURL)
 })
 
+const videoIds = ['bmG1QaiOYp4', 'fFI-wk4PeAc', 'I-vIE9rO5Gg', 'Ml5KLG6-bXg']
+
 // Capture messages from backend that signal historyState changes
-chrome.runtime.onMessage.addListener((msg) => {
+chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
+  sendResponse('received', msg)
+
   if (msg.action === 'historyStateUpdated') {
     getValueFromStorage('currentURL', (res: { currentURL: string }) => {
       router(res.currentURL)
@@ -14,8 +18,8 @@ chrome.runtime.onMessage.addListener((msg) => {
 
 function router(route: string): void {
   if (route.includes('/results')) {
-    setTimeout(cleanUpBanners, 500)
-    setTimeout(addBannerToSearchResults, 500)
+    setTimeout(() => cleanUpBanners(videoIds), 500)
+    setTimeout(() => addBannerToSearchResults(videoIds), 500)
   }
 }
 
@@ -47,14 +51,12 @@ function router(route: string): void {
  * DECLARATIONS
  */
 
-function cleanUpBanners() {
-  console.log('cleanup firing')
+function cleanUpBanners(ids: string[]) {
   // remove existing banners
   const existingImgs = document.getElementsByClassName('starseed-banner')
-  const videoIds = ['bmG1QaiOYp4', 'fFI-wk4PeAc', 'I-vIE9rO5Gg', 'Ml5KLG6-bXg']
 
   while (existingImgs.length > 0) {
-    videoIds.forEach((id) => {
+    ids.forEach((id) => {
       for (let i = 0; i < existingImgs.length; i++) {
         const img = existingImgs[i]
         const parent = img.parentElement
@@ -69,13 +71,11 @@ function cleanUpBanners() {
 }
 
 document.addEventListener('yt-navigate-finish', () => {
-  cleanUpBanners()
+  cleanUpBanners(videoIds)
 })
 
-function addBannerToSearchResults(): void {
-  console.log('add banners is firing')
-  const videoIds = ['bmG1QaiOYp4', 'fFI-wk4PeAc', 'I-vIE9rO5Gg', 'Ml5KLG6-bXg']
-  videoIds.forEach((id: string) => {
+function addBannerToSearchResults(ids: string[]): void {
+  ids.forEach((id: string) => {
     const anchors = $(`a[href*="/watch?v=${id}"][id="thumbnail"]`)
 
     if (anchors.length > 0) {
