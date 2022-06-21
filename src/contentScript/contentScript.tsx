@@ -1,8 +1,4 @@
 // Run this once on inital page load
-
-const videoIds = ['bmG1QaiOYp4', 'fFI-wk4PeAc', 'I-vIE9rO5Gg', 'Ml5KLG6-bXg']
-
-
 getValueFromStorage('currentURL', (res: { currentURL: string }) => {
   console.log(res.currentURL)
 })
