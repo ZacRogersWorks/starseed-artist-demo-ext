@@ -1,18 +1,18 @@
 const videoIds = ['bmG1QaiOYp4', 'fFI-wk4PeAc', 'I-vIE9rO5Gg', 'Ml5KLG6-bXg']
 
 // Run this once on inital page load to get currentUrl and run Router
-getValueFromStorage('currentURL', (res: { currentURL: string }) => {
-  router(res.currentURL)
-})
+init()
+async function init() {
+  const currentURL = await getValueFromStorage('currentURL')
+  router(currentURL)
+}
 
 // Capture messages from backend that signal historyState changes
-chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
+chrome.runtime.onMessage.addListener(async (msg, sender, sendResponse) => {
   sendResponse('received')
-
   if (msg.action === 'historyStateUpdated') {
-    getValueFromStorage('currentURL', (res: { currentURL: string }) => {
-      router(res.currentURL)
-    })
+    const currentURL = await getValueFromStorage('currentURL')
+    router(currentURL)
   }
 })
 
@@ -22,8 +22,16 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
 
 function router(route: string): void {
   if (route.includes('/results')) {
-    setTimeout(() => cleanUpBanners(videoIds), 500)
-    setTimeout(() => addBannerToSearchResults(videoIds), 500)
+    setTimeout(() => {
+      cleanUpBanners(videoIds)
+      setTimeout(()=> {
+        cleanUpBanners(videoIds)
+      }, 500)
+    }, 500)
+    setTimeout(() => {
+      addBannerToSearchResults(videoIds)
+      setTimeout(() => addBannerToSearchResults(videoIds), 500)
+    }, 500)
   }
 
   if (route.includes('/watch')) {
@@ -31,14 +39,19 @@ function router(route: string): void {
     const videoId = urlParams.get('v')
 
     if (videoIds.includes(videoId)) {
-      setTimeout(() => addIconToVideo(), 725)
-      setTimeout(() => addBtnToVideo(), 900)
+      setTimeout(() => {
+        addIconToVideo()
+        setTimeout(addIconToVideo, 900)
+      }, 925)
+      setTimeout(() => {
+        addBtnToVideo()
+        setTimeout(addBtnToVideo, 900)
+      }, 900)
     } else {
       removeElement('ss-icon')
       removeElement('ss-btn')
     }
   }
-
 }
 
 /**
@@ -54,7 +67,10 @@ document.addEventListener('yt-navigate-finish', () => {
  */
 
 function removeElement(id: string) {
-  document.getElementById(id).remove()
+  const el = document.getElementById(id)
+  if (el !== null) {
+    el.remove()
+  }
 }
 
 function addBtnToVideo() {
@@ -151,12 +167,15 @@ function addBannerToSearchResults(ids: string[]): void {
 
 /**
  * Get's a storage value with given key
- * @param cb - callback that receives the storage value
+ * @param key - the desired key stored in storage, 
+ * returns the value for that key, 
+ * not the entire result object
  */
-
-function getValueFromStorage(key: string, cb: Function) {
-  chrome.storage.sync.get(key, (result) => {
-    cb(result)
+function getValueFromStorage(key: string): Promise<string | null> {
+  return new Promise((resolve) => {
+    chrome.storage.sync.get(key, (result) => {
+      resolve(result ? result[key] : null)
+    })
   })
 }
 
