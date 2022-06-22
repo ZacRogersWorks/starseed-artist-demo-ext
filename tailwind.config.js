@@ -8,7 +8,8 @@ module.exports = {
         starseedGray: "#F7F8FF",
         starseedPurp: "#D7D9FF",
         starseedBlue: "#5F8FFF",
-        starseedLight: "#F7F8FF"
+        starseedLight: "#F7F8FF",
+        starseedPink: "#F681A7"
       },
       fontSize: {
         xxs: ".6rem"
