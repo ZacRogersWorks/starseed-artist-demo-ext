@@ -1,9 +1,12 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 
 import profilePic from '../assets/images/artist-profile-pic.png'
 import certifiedIcon from '../assets/images/certified-icon.png'
 
 const ArtistProfile = () => {
+    useEffect(() => {
+        console.log(profilePic)
+    }, [])
     return (
         <div className="h-56  w-full relative overflow-hidden flex flex-col items-center ">
             <div className="h-full w-full background bg-artist-bg bg-cover -z-20 absolute top-0 left-0">
