@@ -6,3 +6,34 @@ body {
     height: 400px;
     width: 400px;
 }
+
+@font-face {
+    font-family: 'ABC Favorit';
+    src: url(./fonts/ABCFavorit-Regular.ttf) format('truetype');
+  }
+
+  @font-face {
+    font-family: 'ABC Favorit';
+    font-weight: 300;
+    src: url(./fonts/ABCFavorit-Light.ttf) format('truetype');
+}
+  
+  @font-face {
+      font-family: 'ABC Favorit';
+      font-weight: 700;
+      src: url(./fonts/ABCFavorit-Medium.ttf) format('truetype');
+  }
+  
+  @font-face {
+      font-family: 'ABC Favorit';
+      font-weight: 800;
+      src: url(./fonts/ABCFavorit-Bold.ttf) format('truetype');
+  }
+
+.artist-dashboard-link {
+    background: linear-gradient(#C296ED, #6995FF );
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+
+}
