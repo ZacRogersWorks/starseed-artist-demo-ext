@@ -17,29 +17,6 @@ import faker from 'faker'
 
 
 
-const labels = ['', '', '', '', '', ''];
-const data = {
-  labels,
-  datasets: [
-    {
-      label: 'This Week',
-      lineTension: 0.35,
-      data: [2000, 5000, 10500, 8000, 7500, 12000],
-      borderColor: '#4169E1',
-      borderCapStyle: 'round',
-      fill: true,
-    },
-    {
-      label: 'Last Week',
-      lineTension: 0.4,
-      data: [5000, 8000, 7500, 12000, 9000, 12600],
-      borderColor: 'rgb(255, 99, 132)',
-      borderDash: [3, 3],
-      borderCapStyle: 'round',
-      borderWidth: 2,
-    },
-  ],
-};
 
 function createGradient(ctx: CanvasRenderingContext2D, area: ChartArea) {
   const colorStart = 'rgba(65, 105, 225, 0.12)';
@@ -53,8 +30,35 @@ function createGradient(ctx: CanvasRenderingContext2D, area: ChartArea) {
   return gradient;
 }
 
-function SpotifyLineChart() {
+function SpotifyLineChart({ randomize }) {
   const chartRef = useRef<ChartJS>(null);
+
+  const labels = ['', '', '', '', '', ''];
+  const data = {
+    labels,
+    datasets: [
+      {
+        label: 'This Week',
+        lineTension: 0.35,
+        data: randomize ? labels.map(() => faker.datatype.number({ min: 15000, max: 18000 })) :
+          ([2000, 5000, 10500, 8000, 7500, 12000]),
+        borderColor: '#4169E1',
+        borderCapStyle: 'round',
+        fill: true,
+      },
+      {
+        label: 'Last Week',
+        lineTension: 0.4,
+        data: randomize ? labels.map(() => faker.datatype.number({ min: 10000, max: 14000 })) :
+          ([5000, 8000, 7500, 12000, 9000, 12600]),
+        borderColor: '#FF4F79',
+        borderDash: [3, 3],
+        borderCapStyle: 'round',
+        borderWidth: 2,
+      },
+    ],
+  };
+
 
   const [chartData, setChartData] = useState<ChartData<'bar'>>({
     datasets: [],
@@ -96,7 +100,10 @@ function SpotifyLineChart() {
     },
     elements: {
       point: {
-        radius: 0
+        radius: 0,
+        pointBackgroundColor: 'black',
+        pointBorderColor: 'white',
+        pointBorderWidth: 1,
       }
     },
     scales: {
@@ -123,9 +130,23 @@ function SpotifyLineChart() {
       }
     },
     plugins: {
+      tooltip: {
+        displayColors: false,
+      },
       legend: {
         display: false,
+        labels: {
+          boxWidth: 8,
+          boxHeight: 8,
+          padding: 20,
+          usePointStyle: true,
+          pointStyle: 'circle',
+          font: {
+            size: 9,
+          },
+        },
         position: 'bottom' as const,
+        align: 'center',
       },
       title: {
         display: false,
@@ -134,13 +155,25 @@ function SpotifyLineChart() {
     },
   };
   return (
-    <Chart type='line' height={'260px'} ref={chartRef} options={{
-      ...options,
-      interaction: {
-        mode: 'index',
-        intersect: false,
-      }
-    }} data={chartData} />
+    <div>
+      <Chart type='line' height={'225px'} ref={chartRef} options={{
+        ...options,
+        interaction: {
+          mode: 'index',
+          intersect: false,
+        }
+      }} data={chartData} />
+      <div className='flex justify-center gap-4 pb-2 '>
+        <div className='flex flex-row gap-2 text-xxs items-center'>
+          <div className='w-[10px] h-[10px] rounded-full bg-[#4169E1]'></div>
+          <p>This Week</p>
+        </div>
+        <div className='flex flex-row gap-2 text-xxs items-center'>
+          <div className='w-[10px] h-[10px] rounded-full bg-[#FF4F79]'></div>
+          <p>Last Week</p>
+        </div>
+      </div>
+    </div>
   )
 }
 
