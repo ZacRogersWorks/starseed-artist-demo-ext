@@ -23,9 +23,9 @@ const Carousel = (props: Props) => {
   }
 
   const cards = [
-    ["Youtube Engagement", EarningsBreakdownChart],
-    ["Spotify Engagement", SpotifyLineChart],
-    ["SoundCloud Engagement", SpotifyLineChart]
+    ["Earnings Breakdown", EarningsBreakdownChart, false],
+    ["Spotify Engagement", SpotifyLineChart, false],
+    ["SoundCloud Engagement", SpotifyLineChart, true]
   ]
 
   const buttons = cards.map((card, index) => {
@@ -36,13 +36,13 @@ const Carousel = (props: Props) => {
   return (
     <div className='relative'>
       <Flicking ref={flicking} onChanged={handleOnCarouselChange} defaultIndex={1} renderOnlyVisible={true}>
-        {cards.map(([title, Chart]) => (
-        <div className='w-[90%] p-2'>
-          <div className='p-2 px-3  drop-shadow bg-white border-starseedLightBlueBorder border rounded-md h-full'>
-            <p className='mb-2'>{title}</p>
-            <Chart />
+        {cards.map(([title, Chart, randomData]) => (
+          <div className='w-[90%] p-2 flex justify-center'>
+            <div className='p-2 px-3 drop-shadow bg-white border-starseedLightBlueBorder border rounded-md h-full'>
+              <p className='mb-4'>{title}</p>
+              <Chart randomize={randomData} />
+            </div>
           </div>
-        </div>
         ))}
       </Flicking>
       <div className="flex mt-1 items-center justify-center z-30 space-x-2">
