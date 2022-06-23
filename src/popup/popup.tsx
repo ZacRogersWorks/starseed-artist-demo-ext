@@ -15,7 +15,7 @@ function Popup() {
     return (
         <div className='w-96 font-abc'>
             <TopBanner />
-            <div className="scroll-container flex flex-col items-center h-[650px] overflow-scroll">
+            <div className="scroll-container flex flex-col items-center overflow-scroll">
                 <ArtistProfile />
                 <TotalEarned />
                 <Carousel />
