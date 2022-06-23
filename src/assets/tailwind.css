@@ -37,8 +37,9 @@
 .flicking-viewport {
     position: relative;
     overflow: hidden;
-    width:100vw;
-    height: 437px;
+    width:384px;
+    height: 324px;
+
 }
 
 .flicking-viewport.vertical {
