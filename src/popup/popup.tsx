@@ -15,12 +15,12 @@ function Popup() {
     return (
         <div className='w-96 font-abc'>
             <TopBanner />
-            <div className="scroll-container flex flex-col items-center">
+            <div className="scroll-container flex flex-col items-center h-[650px] overflow-scroll">
                 <ArtistProfile />
                 <TotalEarned />
                 <Carousel />
                 <Cards />
-                <TopEarning />
+                <TopEarning videoUrl="https://www.youtube.com/watch?v=fFI-wk4PeAc" coinName="CC" totalMined={104671.06} lastWeekMined={103281.06} />
                 <LinkedAccounts />
             </div>
             <FooterButtons />

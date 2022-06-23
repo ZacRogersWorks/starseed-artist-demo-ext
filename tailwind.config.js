@@ -12,7 +12,9 @@ module.exports = {
         starseedPink: "#F681A7",
         starseedLightBlueBorder: "#C5D5FE",
         starseedLight: "#F7F8FF",
-        starseedInactive: "#B4B4CA"
+        starseedInactive: "#B4B4CA",
+        starseedGrayText: "#B4B4CA",
+        starseedGreen: "#54AA84"
       },
       fontSize: {
         xxs: ".6rem"

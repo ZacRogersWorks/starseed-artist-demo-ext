@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, { useEffect } from 'react'
 
 import TotalEarnedCoin from './TotalEarnedCoin'
 
@@ -8,14 +8,13 @@ type Props = {}
 
 const TotalEarned = (props: Props) => {
 
-  useEffect(() => {
-    console.log(starCoinLogo)
-  },[])
   return (
-    <div className="mt-12 flex justify-center items-center">
-      <TotalEarnedCoin coinImage={starCoinLogo} coinSymbol="Star" total={35140.045} />
-      <div></div>
-      <TotalEarnedCoin coinSymbol="CC" total={35140.045}/>
+    <div className="w-full px-3 my-5">
+      <div className="w-full flex justify-between items-center rounded-md border-[1px] border-starseedLightBlueBorder">
+        <TotalEarnedCoin coinImage={starCoinLogo} coinSymbol="Star" total={35140.045} />
+        <div className="h-6 border-r-[1px] border-starseedLightBlueBorder"></div>
+        <TotalEarnedCoin coinSymbol="CC" total={35140.045} />
+      </div>
     </div>
   )
 }
