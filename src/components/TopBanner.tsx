@@ -3,7 +3,7 @@ import React from 'react'
 
 const TopBanner = () => {
     return (
-        <div>
+        <div className="fixed top-0 w-96 z-20">
             <div className={"h-16 bg-white flex justify-between items-center py-4 px-5"}>
                 <div className={"flex items-center transition ease-out duration-400"}>
                     <svg className={"mr-2"} width="20" height="auto" viewBox="0 0 53 53" fill="none" xmlns="http://www.w3.org/2000/svg">

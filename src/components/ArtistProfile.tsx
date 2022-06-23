@@ -8,7 +8,7 @@ const ArtistProfile = () => {
         console.log(profilePic)
     }, [])
     return (
-        <div className="h-56  w-full relative overflow-hidden flex flex-col items-center ">
+        <div className="mt-[100px] h-56 w-full relative overflow-hidden flex flex-col items-center ">
             <div className="h-full w-full background bg-artist-bg bg-cover -z-20 absolute top-0 left-0">
             <div className="ellipse bg-starseedPurp w-[443px] h-52 rounded-[50%] absolute -bottom-1/3 left-1/2 -translate-x-1/2 mix-blend-multiply -z-10"></div>
             </div>
