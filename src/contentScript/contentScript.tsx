@@ -21,7 +21,7 @@ chrome.runtime.onMessage.addListener(async (msg, sender, sendResponse) => {
  */
 
 function router(route: string): void {
-  if (route.includes('/results')) {
+  if (route.includes('/results') || route.includes('/c/')) {
     setTimeout(() => {
       cleanUpBanners(videoIds)
       setTimeout(()=> {
@@ -74,7 +74,15 @@ function removeElement(id: string) {
 }
 
 function addBtnToVideo() {
-  const subscribeBtn = document.getElementById("subscribe-button")
+
+  // First check if this is the new youTube DOM or the original
+  const isNewDOM = document.querySelector('#comment-teaser') !== null // This is only on the new dom
+  let subscribeBtn = null
+  if (isNewDOM) {
+    subscribeBtn = document.getElementById("subscribe-button")
+  } else {
+    subscribeBtn = document.querySelector('#subscribe-button.style-scope.ytd-video-secondary-info-renderer')
+  }
   if (subscribeBtn.parentElement.querySelector('#ss-btn') === null) {
     subscribeBtn.style.display = 'flex'
     subscribeBtn.style.flexDirection = 'row-reverse'
