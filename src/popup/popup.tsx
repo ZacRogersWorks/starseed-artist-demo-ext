@@ -1,23 +1,19 @@
 import React from 'react';
 import '../assets/tailwind.css'
 import { createRoot } from 'react-dom/client'
-
 import TopBanner from '../components/TopBanner';
 import ArtistProfile from '../components/ArtistProfile';
 import TotalEarned from '../components/TotalEarned';
-import Carousel from '../components/Carousel';
+import Carousel from '../components/Carousel/Carousel';
 import Cards from '../components/Cards';
 import TopEarning from '../components/TopEarning';
 import LinkedAccounts from '../components/LinkedAccounts';
 import FooterButtons from '../components/FooterButtons';
 
+
 function Popup() {
     return (
-<<<<<<< Updated upstream
-        <div className='m-4 w-96 font-abc'>
-=======
-        <div className='w-96 h-[650px]  font-abc'>
->>>>>>> Stashed changes
+        <div className='w-96 font-abc'>
             <TopBanner />
             <div className="scroll-container flex flex-col items-center overflow-scroll">
                 <ArtistProfile />

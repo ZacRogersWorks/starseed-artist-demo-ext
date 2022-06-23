@@ -3,6 +3,13 @@
     "name": "Starseed Artist Demo",
     "description": "Tech demo showcasing Starseed extension for artists",
     "version": "0.0.1",
+    "permissions": [
+      "activeTab",
+      "scripting",
+      "tabs",
+      "webNavigation",
+      "storage"
+    ],
     "action" : {
         "default_popup": "popup.html",
         "default_title": "Starseed Artist",
@@ -15,12 +22,32 @@
     },
     "options_page": "options.html",
     "background": {
-        "service_worker": "background.js"
+        "service_worker": "background.js",
+        "type": "module"
     },
     "content_scripts": [
         {
             "matches": ["<all_urls>"],
-            "js": ["contentScript.js"]
+            "js": ["jquery-3.0.0.slim.min.js", "contentScript.js"],
+            "run_at": "document_idle"
         }
-    ]
+    ],
+    "externally_connectable": {
+      "matches": ["*://youtube.com/*"]
+    },
+    "web_accessible_resources": [
+        {
+          "resources": [
+            "images/ss-banner.png",
+            "images/ss-btn.png",
+            "images/ss-icon.png"
+          ],
+          "matches": [
+            "https://www.youtube.com/*"
+          ]
+        }
+      ],
+      "host_permissions": [
+        "http://www.youtube.com/"
+      ]
 }
