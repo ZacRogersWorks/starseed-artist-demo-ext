@@ -2,7 +2,8 @@
 import React, { useRef, useState } from 'react'
 import Flicking from "@egjs/react-flicking";
 import "@egjs/react-flicking/dist/flicking.css";
-
+import SpotifyLineChart from './Charts/SpotifyLineChart'
+import EarningsBreakdownChart from './Charts/EarningsBreakdownChart'
 type Props = {}
 
 const Carousel = (props: Props) => {
@@ -22,9 +23,9 @@ const Carousel = (props: Props) => {
   }
 
   const cards = [
-    ["Youtube Engagement"],
-    ["Spotify Engagement"],
-    ["SoundCloud Engagement"]
+    ["Youtube Engagement", EarningsBreakdownChart],
+    ["Spotify Engagement", SpotifyLineChart],
+    ["SoundCloud Engagement", SpotifyLineChart]
   ]
 
   const buttons = cards.map((card, index) => {
@@ -35,12 +36,13 @@ const Carousel = (props: Props) => {
   return (
     <div className='relative'>
       <Flicking ref={flicking} onChanged={handleOnCarouselChange} defaultIndex={1} renderOnlyVisible={true}>
-        {cards.map(([title]) => (
-          <div className='w-[90%] p-2'>
-            <div className='p-2 px-3  drop-shadow bg-white border-starseedLightBlueBorder border rounded-md h-full'>
-              <p>{title}</p>
-            </div>
+        {cards.map(([title, Chart]) => (
+        <div className='w-[90%] p-2'>
+          <div className='p-2 px-3  drop-shadow bg-white border-starseedLightBlueBorder border rounded-md h-full'>
+            <p className='mb-2'>{title}</p>
+            <Chart />
           </div>
+        </div>
         ))}
       </Flicking>
       <div className="flex mt-1 items-center justify-center z-30 space-x-2">
