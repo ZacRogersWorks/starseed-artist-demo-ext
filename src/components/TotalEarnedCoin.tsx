@@ -8,17 +8,17 @@ interface Props {
 
 const TotalEarnedCoin = ({ coinImage, coinSymbol, total }: Props) => {
   return (
-    <div className="flex items-center px-3">
+    <div className="flex items-center px-3 py-2">
       <div className="pr-3">
         {coinImage ?
           <img className="w-7 h-auto" src={coinImage} alt={coinSymbol} />
-          : <span className="w-7 h-7 p-1 bg-starseedPink rounded-full text-xs text-white">${coinSymbol}</span>
+          : <span className="block w-7 h-7 pt-0.5 rounded-full bg-starseedPink text-xxs text-white flex justify-center items-center">${coinSymbol}</span>
       }
       </div>
-      <div className="border-r-2"></div>
+      
       <div>
-        <p>${coinSymbol} Earned</p>
-        <p>{total}</p>
+        <p className="text-xxs text-starseedGrayText">${coinSymbol} Earned</p>
+        <p className="text-xl">{total}</p>
       </div>
     </div>
   )
