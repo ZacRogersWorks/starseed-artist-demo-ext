@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import randomize from '../utils/randomize'
 
 interface Props {
     svg: string;
@@ -6,18 +7,31 @@ interface Props {
     currentAmount: number;
     lastWeekTotal: number;
     returnPercent: boolean;
+    decimals: number;
     children?: React.ReactNode;
 }
 
-const Card = ({ svg, title, currentAmount, lastWeekTotal, returnPercent }: Props) => {
+const Card = ({ svg, title, currentAmount, lastWeekTotal, returnPercent, decimals}: Props) => {
+    const [currentTotal, setCurrentTotal] = useState<number>(currentAmount)
     const [percentageChanged, setPercentageChanged] = useState<number>()
 
     useEffect(() => {
-        const divide = (currentAmount - lastWeekTotal) / lastWeekTotal
+        const divide = (currentTotal - lastWeekTotal) / lastWeekTotal
         const moveDecimal = divide * 100
         const roundToHundredth = Math.round(moveDecimal * 100) / 100
         setPercentageChanged(roundToHundredth)
-    }, [currentAmount])
+    }, [currentTotal])
+
+    useEffect(() => {
+        setInterval(() => {
+            const increase = randomize(currentTotal, lastWeekTotal, returnPercent)
+            setCurrentTotal(prev => (prev + increase))
+        }, 4000)
+    }, [])
+
+    useEffect(() => {
+        console.log(title, currentTotal)
+    }, [currentTotal])
 
     return (
         <div className="my-5 mx-3 p-2 rounded-md border-[1px] border-starseedLightBlueBorder flex justify-between">
@@ -28,7 +42,7 @@ const Card = ({ svg, title, currentAmount, lastWeekTotal, returnPercent }: Props
                 <div className="ml-5">
                     <div >
                         <p className="text-starseedGrayText text-base">{title}</p>
-                        <p className="text-4xl">{currentAmount + (returnPercent ? '%' : null)}</p>
+                        <p className="text-4xl">{currentTotal + (returnPercent ? '%' : null)}</p>
                     </div>
                     <div className="flex items-center">
                         <svg width="18" height="18" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
