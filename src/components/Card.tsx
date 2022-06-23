@@ -20,7 +20,7 @@ const Card = ({ svg, title, currentAmount, lastWeekTotal, returnPercent }: Props
     }, [currentAmount])
 
     return (
-        <div className="my-5 mx-3 p-2 rounded-md border-[1px] border-starseedLightBlueBorder flex justify-between">
+        <div className="my-5 bg-white px-3 py-4 rounded-md border border-starseedLightBlueBorder flex justify-between">
             <div className="flex">
                 <div className="h-14 w-14 ">
                     <img src={svg} alt={title} />

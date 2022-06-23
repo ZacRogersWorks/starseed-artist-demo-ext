@@ -13,17 +13,21 @@ import FooterButtons from '../components/FooterButtons';
 
 function Popup() {
     return (
-        <div className='w-96 font-abc'>
+        <div className='w-[400px] relative font-abc'>
             <TopBanner />
-            <div className="scroll-container flex flex-col items-center overflow-scroll">
-                <ArtistProfile />
+            <ArtistProfile />
+            <div className='px-4'>
                 <TotalEarned />
-                <Carousel />
+            </div>
+            <Carousel />
+            <div className='px-4 w-full relative mb-8'>
                 <Cards />
                 <TopEarning videoUrl="https://www.youtube.com/watch?v=fFI-wk4PeAc" coinName="CC" totalMined={104671.06} lastWeekMined={103281.06} />
                 <LinkedAccounts />
             </div>
-            <FooterButtons />
+            <div className='pb-10 w-inherit'>
+                <FooterButtons />
+            </div>
         </div>
     )
 }

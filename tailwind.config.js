@@ -4,6 +4,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        'artist-bg': "url('images/artist-bg.jpeg')",
+      },
       colors: {
         starseedGray: "#F7F8FF",
         starseedPurp: "#D7D9FF",
@@ -20,9 +23,7 @@ module.exports = {
         xxs: ".6rem"
       }
     },
-    backgroundImage: {
-      'artist-bg': "url('images/artist-bg.jpeg')",
-    },
+
     fontFamily: {
       abc: ['ABC Favorit'],
     },

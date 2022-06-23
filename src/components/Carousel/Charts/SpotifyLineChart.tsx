@@ -156,7 +156,7 @@ function SpotifyLineChart({ randomize }) {
   };
   return (
     <div>
-      <Chart type='line' height={'225px'} ref={chartRef} options={{
+      <Chart type='line' height={'205px'} ref={chartRef} options={{
         ...options,
         interaction: {
           mode: 'index',
