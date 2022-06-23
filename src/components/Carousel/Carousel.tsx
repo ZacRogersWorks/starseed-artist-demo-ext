@@ -4,9 +4,8 @@ import Flicking from "@egjs/react-flicking";
 import "@egjs/react-flicking/dist/flicking.css";
 import SpotifyLineChart from './Charts/SpotifyLineChart'
 import EarningsBreakdownChart from './Charts/EarningsBreakdownChart'
-type Props = {}
 
-const Carousel = (props: Props) => {
+const Carousel = () => {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(1)
   const flicking = useRef(null)
 
