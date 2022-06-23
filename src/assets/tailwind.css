@@ -25,20 +25,53 @@
     src: url(./fonts/ABCFavorit-Bold.ttf) format('truetype');
 }
 
-.artist-dashboard-link {
-    background: linear-gradient(#C296ED, #6995FF);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
+@layer base {
+    body {
+        @apply bg-starseedGray;
+    }
 }
+
+@layer components {
+    .artist-dashboard-link {
+        background: linear-gradient(#C296ED, #6995FF);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        position: relative;
+    }
+
+    .artist-dash-link-underline::after {
+        content: '';
+        animation: fadein 290ms;
+        @apply bg-starseedPurp absolute left-0 bottom-0 w-full h-[2px];
+    }
+
+    .w-inherit {
+        width: inherit;
+    }
+}
+
+@keyframes fadein {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 100;
+    }
+}
+
+
+
 
 /* Card Slider (Flicking) */
 
 .flicking-viewport {
     position: relative;
     overflow: hidden;
-    width:384px;
+    width: 100%;
     height: 324px;
+    padding: 5px;
 
 }
 

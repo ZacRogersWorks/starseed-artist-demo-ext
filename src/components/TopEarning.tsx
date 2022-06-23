@@ -38,9 +38,9 @@ const TopEarning = ({ videoUrl, totalMined, lastWeekMined, coinName }: Props) =>
   }, [])
 
   return (
-    <div className="mx-3 rounded-md border-[1px] border-starseedLightBlueBorder">
-      <div className="p-2 border-b-[1px] border-starseedLightBlueBorder">
-        <div className="flex justify-between">
+    <div className="bg-white px-3 py-4 rounded-md border border-starseedLightBlueBorder">
+      <div className="border-b border-starseedLightBlueBorder">
+        <div className="flex justify-between mb-3">
           <p>Top Earning</p>
           <svg className="mt-1.5" width="14" height="4" viewBox="0 0 14 4" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle r="1.42737" transform="matrix(1 0 0 -1 2.63994 1.97188)" stroke="#B4B4CA" stroke-width="0.85093" />
@@ -55,13 +55,13 @@ const TopEarning = ({ videoUrl, totalMined, lastWeekMined, coinName }: Props) =>
               <img className="" src={youtubeButton} alt="Open YouTube" />
             </a>
           </div>
-          <p className="text-sm mt-2">{videoTitle}</p>
+          <p className="text-sm my-4">{videoTitle}</p>
         </div>
       </div>
-      <div className="p-2">
+      <div className="pt-3">
         <div >
           <p className="text-starseedGrayText text-sm">${coinName} Tokens Mined From This Track</p>
-          <p className="text-4xl">{totalMined}</p>
+          <p className="text-4xl py-[3px]">{totalMined.toLocaleString()}</p>
         </div>
         <div className="flex items-center">
           <svg width="18" height="18" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
