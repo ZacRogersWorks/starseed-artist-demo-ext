@@ -22,21 +22,21 @@ const LinkedAccounts = (props: Props) => {
             <img className="w-6 h-auto" src={youtubeIcon} alt="YouTube" />
             <p className="ml-4 text-sm">YouTube</p>
           </a>
-          <a className="text-xxs text-starseedGrayText">Disconnect</a>
+          <a className="text-xxs text-starseedGrayText hover:underline hover:cursor-pointer">Disconnect</a>
         </div>
         <div className="px-2 py-3 flex items-center justify-between border-b-[1px] border-starseedLightBlueBorder">
           <a className="flex items-center">
             <img className="w-6 h-auto" src={spotifyIcon} alt="Spotify" />
             <p className="ml-4 text-sm">Spotify</p>
           </a>
-          <a className="text-xxs text-starseedGrayText">Disconnect</a>
+          <a className="text-xxs text-starseedGrayText hover:underline hover:cursor-pointer">Disconnect</a>
         </div>
         <div className="px-2 py-3 flex items-center justify-between border-starseedLightBlueBorder">
           <a className="flex items-center">
             <img className="w-6 h-auto" src={soundcloudIcon} alt="Soundcloud" />
             <p className="ml-4 text-sm">Soundcloud</p>
           </a>
-          <a className="text-xxs text-starseedGrayText">Disconnect</a>
+          <a className="text-xxs text-starseedGrayText hover:underline hover:cursor-pointer">Disconnect</a>
         </div>
       </div>
 

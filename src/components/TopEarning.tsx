@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import youtubeButton from '../assets/images/svgs/youtubeButton.svg'
+import randomize from '../utils/randomize'
 
 type Props = {
   videoUrl: string,
@@ -12,14 +13,22 @@ const TopEarning = ({ videoUrl, totalMined, lastWeekMined, coinName }: Props) =>
   const [videoId, setVideoId] = useState<string>()
   const [videoImg, setVideoImg] = useState<string>()
   const [videoTitle, setVideoTitle] = useState<string>()
+  const [currentTotal, setCurrentTotal] = useState<number>(totalMined)
   const [percentageChanged, setPercentageChanged] = useState<number>()
 
   useEffect(() => {
-    const divide = (totalMined - lastWeekMined) / lastWeekMined
+    const divide = (currentTotal - lastWeekMined) / lastWeekMined
     const moveDecimal = divide * 100
     const roundToHundredth = Math.round(moveDecimal * 100) / 100
     setPercentageChanged(roundToHundredth)
-  }, [totalMined])
+  }, [currentTotal])
+
+  useEffect(() => {
+    setInterval(() => {
+      const increaseBy = randomize(totalMined, 100035.045, false, 3)
+      setCurrentTotal(prev => +(prev + increaseBy).toFixed(3))
+    },4000)
+  }, [])
 
 
   const getVideoTitle = (): void => {
@@ -52,7 +61,7 @@ const TopEarning = ({ videoUrl, totalMined, lastWeekMined, coinName }: Props) =>
           <div className="relative">
             <img className="rounded-lg" src={videoImg} alt={videoTitle} />
             <a className="w-20 h-auto absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" href={videoUrl} title={videoTitle} target="_blank">
-              <img className="" src={youtubeButton} alt="Open YouTube" />
+              <img className="hover:cursor-pointer hover:scale-110 transition-transform duration-300 ease-out" src={youtubeButton} alt="Open YouTube" />
             </a>
           </div>
           <p className="text-sm mt-2">{videoTitle}</p>
@@ -61,7 +70,11 @@ const TopEarning = ({ videoUrl, totalMined, lastWeekMined, coinName }: Props) =>
       <div className="p-2">
         <div >
           <p className="text-starseedGrayText text-sm">${coinName} Tokens Mined From This Track</p>
+<<<<<<< Updated upstream
           <p className="text-4xl">{totalMined}</p>
+=======
+          <p className="text-4xl py-[3px]">{currentTotal.toLocaleString()}</p>
+>>>>>>> Stashed changes
         </div>
         <div className="flex items-center">
           <svg width="18" height="18" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">

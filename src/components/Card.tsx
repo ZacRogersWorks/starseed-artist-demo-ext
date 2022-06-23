@@ -7,11 +7,11 @@ interface Props {
     currentAmount: number;
     lastWeekTotal: number;
     returnPercent: boolean;
-    decimals: number;
+    precision: number;
     children?: React.ReactNode;
 }
 
-const Card = ({ svg, title, currentAmount, lastWeekTotal, returnPercent, decimals}: Props) => {
+const Card = ({ svg, title, currentAmount, lastWeekTotal, returnPercent, precision}: Props) => {
     const [currentTotal, setCurrentTotal] = useState<number>(currentAmount)
     const [percentageChanged, setPercentageChanged] = useState<number>()
 
@@ -24,8 +24,8 @@ const Card = ({ svg, title, currentAmount, lastWeekTotal, returnPercent, decimal
 
     useEffect(() => {
         setInterval(() => {
-            const increase = randomize(currentTotal, lastWeekTotal, returnPercent)
-            setCurrentTotal(prev => (prev + increase))
+            const increase = randomize(currentTotal, lastWeekTotal, returnPercent, precision)
+            setCurrentTotal(prev => +(prev + increase).toFixed(precision))
         }, 4000)
     }, [])
 
@@ -53,7 +53,7 @@ const Card = ({ svg, title, currentAmount, lastWeekTotal, returnPercent, decimal
                     </div>
                 </div>
             </div>
-            <svg className="mt-1.5" width="14" height="4" viewBox="0 0 14 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg className="mt-1.5 hover:cursor-pointer hover:scale-125 transition-transform duration-300 ease-out" width="14" height="4" viewBox="0 0 14 4" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle r="1.42737" transform="matrix(1 0 0 -1 2.63994 1.97188)" stroke="#B4B4CA" stroke-width="0.85093" />
                 <circle r="1.42737" transform="matrix(1 0 0 -1 7.16924 1.97188)" stroke="#B4B4CA" stroke-width="0.85093" />
                 <circle r="1.42737" transform="matrix(1 0 0 -1 11.698 1.97188)" stroke="#B4B4CA" stroke-width="0.85093" />

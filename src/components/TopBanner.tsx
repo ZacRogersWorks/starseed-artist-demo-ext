@@ -22,7 +22,7 @@ const TopBanner = () => {
                     </svg>
 
                 </div>
-                <a title="My Profile" className={"transition duration-400 ease-out hover:scale-110"}>
+                <a title="My Profile" className={"transition duration-400 ease-out hover:scale-110 hover:cursor-pointer"}>
                     <svg width="20" height="auto" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M19.8727 36H32.1273V32H19.8727V36ZM32.1273 36C36.4753 36 40 39.5247 40 43.8727H44C44 37.3156 38.6844 32 32.1273 32V36ZM19.8727 32C13.3156 32 8 37.3156 8 43.8727H12C12 39.5247 15.5247 36 19.8727 36V32ZM32 18C32 21.3137 29.3137 24 26 24V28C31.5228 28 36 23.5228 36 18H32ZM26 24C22.6863 24 20 21.3137 20 18H16C16 23.5228 20.4772 28 26 28V24ZM20 18C20 14.6863 22.6863 12 26 12V8C20.4772 8 16 12.4772 16 18H20ZM26 12C29.3137 12 32 14.6863 32 18H36C36 12.4772 31.5228 8 26 8V12ZM48 26C48 38.1503 38.1503 48 26 48V52C40.3594 52 52 40.3594 52 26H48ZM26 48C13.8497 48 4 38.1503 4 26H0C0 40.3594 11.6406 52 26 52V48ZM4 26C4 13.8497 13.8497 4 26 4V0C11.6406 0 0 11.6406 0 26H4ZM26 4C38.1503 4 48 13.8497 48 26H52C52 11.6406 40.3594 0 26 0V4Z" fill="#5F8FFF" />
                     </svg>
@@ -34,8 +34,13 @@ const TopBanner = () => {
                     <svg className="mr-3" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M6.47967 5.87069V2.25449C6.47967 1.85506 6.80348 1.53125 7.20291 1.53125H13.7121C14.1115 1.53125 14.4353 1.85506 14.4353 2.25449V7.31717C14.4353 7.7166 14.1115 8.04041 13.7121 8.04041H1.41699M14.4353 3.70097H6.47967M2.14023 13.8263H10.8191C11.2185 13.8263 11.5424 13.5025 11.5424 13.1031V6.59393C11.5424 6.1945 11.2185 5.87069 10.8191 5.87069H2.14023C1.7408 5.87069 1.41699 6.1945 1.41699 6.59393V13.1031C1.41699 13.5025 1.7408 13.8263 2.14023 13.8263Z" stroke="#9696F7" stroke-width="1.08486" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
+<<<<<<< Updated upstream
                     <a className="text-sm" href="/" title="Artist Dashboard">
                         <span className="artist-dashboard-link">
+=======
+                    <a className="text-sm" href="#" title="Artist Dashboard">
+                        <span className="artist-dashboard-link group-hover:artist-dash-link-underline">
+>>>>>>> Stashed changes
                             View Artist Dashboard
                         </span>
                     </a>
