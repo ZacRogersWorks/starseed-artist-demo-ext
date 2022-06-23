@@ -4,7 +4,7 @@ import { createRoot } from 'react-dom/client'
 import TopBanner from '../components/TopBanner';
 import ArtistProfile from '../components/ArtistProfile';
 import TotalEarned from '../components/TotalEarned';
-import Carousel from '../components/Carousel';
+import Carousel from '../components/Carousel/Carousel';
 import Cards from '../components/Cards';
 import TopEarning from '../components/TopEarning';
 import LinkedAccounts from '../components/LinkedAccounts';
