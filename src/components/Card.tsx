@@ -34,7 +34,7 @@ const Card = ({ svg, title, currentAmount, lastWeekTotal, returnPercent, precisi
     }, [currentTotal])
 
     return (
-        <div className="my-5 mx-3 p-2 rounded-md border-[1px] border-starseedLightBlueBorder flex justify-between">
+        <div className="my-5 bg-white px-3 py-4 rounded-md border border-starseedLightBlueBorder flex justify-between">
             <div className="flex">
                 <div className="h-14 w-14 ">
                     <img src={svg} alt={title} />
@@ -47,7 +47,7 @@ const Card = ({ svg, title, currentAmount, lastWeekTotal, returnPercent, precisi
                     <div className="flex items-center">
                         <svg width="18" height="18" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <circle cx="22.879" cy="22.9571" r="22.2891" fill="#C2EEDA" />
-                            <path d="M30.731 12.9809L15.1451 31.6443M30.731 12.9809L31.9619 26.6806M30.731 12.9809L17.0313 14.2119" stroke="#54AA84" stroke-width="2.53286" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M30.731 12.9809L15.1451 31.6443M30.731 12.9809L31.9619 26.6806M30.731 12.9809L17.0313 14.2119" stroke="#54AA84" strokeWidth="2.53286" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
                         <p className="ml-2 text-xs text-starseedGrayText"><span className="percent text-starseedGreen mr-0.25">{percentageChanged + '%'}</span> this week</p>
                     </div>

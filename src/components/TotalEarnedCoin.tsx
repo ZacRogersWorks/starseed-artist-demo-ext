@@ -23,7 +23,7 @@ const TotalEarnedCoin = ({ coinImage, coinSymbol, total }: Props) => {
       <div className="pr-3">
         {coinImage ?
           <img className="w-7 h-auto" src={coinImage} alt={coinSymbol} />
-          : <span className="block w-7 h-7 pt-0.5 rounded-full bg-starseedPink text-xxs text-white flex justify-center items-center">${coinSymbol}</span>
+          : <span className="w-7 h-7 pt-0.5 rounded-full bg-starseedPink text-xxs text-white flex justify-center items-center">${coinSymbol}</span>
       }
       </div>
       
