@@ -51,7 +51,7 @@ const TopEarning = ({ videoUrl, totalMined, lastWeekMined, coinName }: Props) =>
       <div className="border-b border-starseedLightBlueBorder">
         <div className="flex justify-between mb-3">
           <p>Top Earning</p>
-          <svg className="mt-1.5" width="14" height="4" viewBox="0 0 14 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg className="mt-1.5 hover:cursor-pointer hover:scale-125 transition-transform duration-300 ease-out" width="14" height="4" viewBox="0 0 14 4" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle r="1.42737" transform="matrix(1 0 0 -1 2.63994 1.97188)" stroke="#B4B4CA" strokeWidth="0.85093" />
             <circle r="1.42737" transform="matrix(1 0 0 -1 7.16924 1.97188)" stroke="#B4B4CA" strokeWidth="0.85093" />
             <circle r="1.42737" transform="matrix(1 0 0 -1 11.698 1.97188)" stroke="#B4B4CA" strokeWidth="0.85093" />
