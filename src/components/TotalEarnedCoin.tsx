@@ -1,14 +1,25 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
+import randomize from '../utils/randomize'
 
 interface Props {
   coinImage?: string;
   coinSymbol?: string;
   total: number;
+  
 }
 
 const TotalEarnedCoin = ({ coinImage, coinSymbol, total }: Props) => {
+  const [currentTotal, setCurrentTotal] = useState<number>(total)
+
+  useEffect(() => {
+    setInterval(() => {
+      const increaseBy = randomize(total, 34035.045, false, 3)
+      setCurrentTotal(prev => +(prev + increaseBy).toFixed(3))
+    },4000)
+  }, [])
+
   return (
-    <div className="flex items-center px-3 py-2">
+    <div className="flex items-center px-3 py-2 w-max">
       <div className="pr-3">
         {coinImage ?
           <img className="w-7 h-auto" src={coinImage} alt={coinSymbol} />
@@ -18,7 +29,7 @@ const TotalEarnedCoin = ({ coinImage, coinSymbol, total }: Props) => {
       
       <div>
         <p className="text-xxs text-starseedGrayText">${coinSymbol} Earned</p>
-        <p className="text-xl">{total}</p>
+        <p className="text-xl">{currentTotal}</p>
       </div>
     </div>
   )

@@ -10,7 +10,9 @@ module.exports = {
       colors: {
         starseedGray: "#F7F8FF",
         starseedPurp: "#D7D9FF",
+        starseedPurpHover: "#C2C3E6",
         starseedBlue: "#5F8FFF",
+        starseedBlueHover: "#517AD9",
         starseedLight: "#F7F8FF",
         starseedPink: "#F681A7",
         starseedLightBlueBorder: "#C5D5FE",

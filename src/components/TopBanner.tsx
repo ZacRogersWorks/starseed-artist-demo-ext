@@ -22,7 +22,7 @@ const TopBanner = () => {
                     </svg>
 
                 </div>
-                <a title="My Profile" className={"transition duration-400 ease-out hover:scale-110"}>
+                <a title="My Profile" className={"transition duration-400 ease-out hover:scale-110 hover:cursor-pointer"}>
                     <svg width="20" height="auto" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M19.8727 36H32.1273V32H19.8727V36ZM32.1273 36C36.4753 36 40 39.5247 40 43.8727H44C44 37.3156 38.6844 32 32.1273 32V36ZM19.8727 32C13.3156 32 8 37.3156 8 43.8727H12C12 39.5247 15.5247 36 19.8727 36V32ZM32 18C32 21.3137 29.3137 24 26 24V28C31.5228 28 36 23.5228 36 18H32ZM26 24C22.6863 24 20 21.3137 20 18H16C16 23.5228 20.4772 28 26 28V24ZM20 18C20 14.6863 22.6863 12 26 12V8C20.4772 8 16 12.4772 16 18H20ZM26 12C29.3137 12 32 14.6863 32 18H36C36 12.4772 31.5228 8 26 8V12ZM48 26C48 38.1503 38.1503 48 26 48V52C40.3594 52 52 40.3594 52 26H48ZM26 48C13.8497 48 4 38.1503 4 26H0C0 40.3594 11.6406 52 26 52V48ZM4 26C4 13.8497 13.8497 4 26 4V0C11.6406 0 0 11.6406 0 26H4ZM26 4C38.1503 4 48 13.8497 48 26H52C52 11.6406 40.3594 0 26 0V4Z" fill="#5F8FFF" />
                     </svg>

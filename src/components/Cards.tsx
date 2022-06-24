@@ -12,12 +12,12 @@ import percentCirculating from '../assets/images/svgs/percentCirculating.svg'
 const Cards = (props) => {
   return (
     <div className="w-full relative">
-      <Card svg={totalHolders} title="Total Holders" currentAmount={35140} lastWeekTotal={34859} returnPercent={false} decimals={0} />
-      <Card svg={minutesStreamed} title="Minutes Streamed" currentAmount={17140.5} lastWeekTotal={14149.8} returnPercent={false} decimals={2} />
-      <Card svg={tokenPrice} title="Token Price" currentAmount={.71254} lastWeekTotal={.68321} returnPercent={false} decimals={4} />
-      <Card svg={tokensMined} title="Tokens Mined" currentAmount={104671.06} lastWeekTotal={101671.2} returnPercent={false} decimals={2} />
-      <Card svg={percentageMined} title="Percentage Mined" currentAmount={69.42} lastWeekTotal={68.89} returnPercent={true} decimals={2} />
-      <Card svg={percentCirculating} title="Percent In Circulation" currentAmount={19.73} lastWeekTotal={18.21} returnPercent={true} decimals={2} />
+      <Card svg={totalHolders} title="Total Holders" currentAmount={35140} lastWeekTotal={34859} returnPercent={false} precision={0} />
+      <Card svg={minutesStreamed} title="Minutes Streamed" currentAmount={17140.5} lastWeekTotal={14149.8} returnPercent={false} precision={2} />
+      <Card svg={tokenPrice} title="Token Price" currentAmount={.71254} lastWeekTotal={.68321} returnPercent={false} precision={5} />
+      <Card svg={tokensMined} title="Tokens Mined" currentAmount={104671.06} lastWeekTotal={101671.2} returnPercent={false} precision={2} />
+      <Card svg={percentageMined} title="Percentage Mined" currentAmount={69.42} lastWeekTotal={68.89} returnPercent={true} precision={2} />
+      <Card svg={percentCirculating} title="Percent In Circulation" currentAmount={19.73} lastWeekTotal={18.21} returnPercent={true} precision={2} />
 
     </div>
   )
