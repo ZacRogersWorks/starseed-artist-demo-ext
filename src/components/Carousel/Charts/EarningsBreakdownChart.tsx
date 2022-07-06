@@ -46,6 +46,7 @@ function EarningsBreakdownChart() {
 
   return (
     <div className='relative w-full h-[65%] mb-4'>
+      {/* @ts-ignore */}
       <Chart type='doughnut' options={options} data={data} />
       <div className='absolute text-3xl opacity-70 font-bold top-[76px] -z-10 right-[131px]'>
         $CC
