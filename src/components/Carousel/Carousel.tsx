@@ -59,7 +59,9 @@ const Carousel = () => {
         {cards.map(([title, Chart, randomData, id]) => (
           <div className='w-[91%] mx-[3px] justify-center bg-white'>
             <div className='h-full w-full p-4 drop-shadow border-starseedLightBlueBorder border rounded-md'>
+              {/* @ts-ignore */}
               <p className='mb-4'>{title}</p>
+              {/* @ts-ignore */}
               <Chart key={id} randomize={randomData} />
             </div>
           </div>
